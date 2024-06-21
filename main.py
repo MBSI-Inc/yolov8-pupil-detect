@@ -1,6 +1,7 @@
 import cv2
 import math
 from ultralytics import YOLO
+from sys import platform
 
 def train():
     model = YOLO("yolov8m.pt")
@@ -26,8 +27,12 @@ def predict():
 
 def predict_webcam():
     print("Start predict with webcam")
-    model = YOLO("runs/detect/train9/weights/best.pt")
-    cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    # model = YOLO("runs/detect/train9/weights/best.pt")
+    model = YOLO("yolov8_pupil_weight.pt")
+    if platform == "win32":
+        cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    else:
+        cam = cv2.VideoCapture(0)
     cam.set(3, 640)
     cam.set(4, 480)
     cam.set(cv2.CAP_PROP_FPS, 15)
