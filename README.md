@@ -8,13 +8,15 @@
 
 ## Link
 
-- Install instruction: <https://docs.ultralytics.com/quickstart/#install-ultralytics>
+- Pytorch install instruction: <https://pytorch.org/get-started/locally/>
+
+- Ultralytics install instruction: <https://docs.ultralytics.com/quickstart/#install-ultralytics>
 
 - Training setting: <https://docs.ultralytics.com/modes/train/#train-settings>
 
 - Ultralytics GitHub: <https://github.com/ultralytics/ultralytics?tab=readme-ov-file>
 
-- Youtube tutorial: <https://www.youtube.com/watch?v=LNwODJXcvt4>
+- Youtube tutorial on training custom weight: <https://www.youtube.com/watch?v=LNwODJXcvt4>
 
 - Dataset: <https://universe.roboflow.com/pupiup-rjvfv/cau001/dataset/1>
 

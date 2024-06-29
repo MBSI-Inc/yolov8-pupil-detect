@@ -3,32 +3,12 @@ import math
 from ultralytics import YOLO
 from sys import platform
 
-def train():
-    model = YOLO("yolov8m.pt")
-    model.train(data="datasets/data.yaml", epochs=20)
-    model.val()
-
-def predict():
-    print("Start predict")
-    model = YOLO("runs/detect/train9/weights/best.pt")
-    # Run batched inference on a list of images
-    results = model(["test_stuff/im2.jpg"])  # return a list of Results objects
-
-    # Process results list
-    for result in results:
-        boxes = result.boxes  # Boxes object for bounding box outputs
-        masks = result.masks  # Masks object for segmentation masks outputs
-        keypoints = result.keypoints  # Keypoints object for pose outputs
-        probs = result.probs  # Probs object for classification outputs
-        obb = result.obb  # Oriented boxes object for OBB outputs
-        result.show()  # display to screen
-        result.save(filename="test_stuff/result.png")  # save to disk
-
-
 def predict_webcam():
     print("Start predict with webcam")
-    # model = YOLO("runs/detect/train9/weights/best.pt")
+    # For convenience, you can copy the best.pt file to the root folder and rename
+    # it to have easier access
     model = YOLO("yolov8_pupil_weight.pt")
+    # The next section is setup the camera
     if platform == "win32":
         cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     else:

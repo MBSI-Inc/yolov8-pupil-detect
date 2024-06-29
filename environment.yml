@@ -8,7 +8,8 @@ dependencies:
   - python=3.8
   - pytorch
   - torchvision
-  - pytorch-cuda=11.8 # Change it depend on your setup
+  # Remove the next line to use pytorch CPU
+  - pytorch-cuda=11.8
   - pip
   - pip:
       - ultralytics
