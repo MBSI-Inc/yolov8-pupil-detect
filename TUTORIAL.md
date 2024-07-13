@@ -17,6 +17,10 @@
 
 ## Step 4: Predict on camera
 
-- Make sure you have a camera connected.
+- Make sure you have a camera connected and the weight file.
+
+- If you didn't have the weight, read the README file.
+
+- If you don't want to read the README file, there is the link <https://drive.google.com/file/d/13mIAXKPk6kJ8HmryrdM3k6FbiSb51-yv/view?usp=sharing>
 
 - Observe and execute the `step4_predict_camera.py` file.
