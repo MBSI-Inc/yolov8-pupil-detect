@@ -32,7 +32,7 @@ def predict_webcam():
     # model = YOLO("runs/detect/train9/weights/best.pt")
     model = YOLO("yolov8_pupil_weight.pt")
     if platform == "win32":
-        cam = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+        cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     else:
         cam = cv2.VideoCapture(0)
     cam.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -79,7 +79,6 @@ def predict_webcam():
             # Press C on keyboard to record
             x1, y1, x2, y2, confidence = best_iris_data
             center_coord = [(x1 + x2) // 2, (y1 + y2) // 2]
-            # print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", threshold_data)
             cv2.putText(img, "U", [frame_w // 2, threshold_data[0]], cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 100, 100), 1)
             cv2.line(img, [0, threshold_data[0]], [frame_w, threshold_data[0]], (255, 100, 100), 1)
 
@@ -99,7 +98,8 @@ def predict_webcam():
                 threshold_data[2] = center_coord[1] + THRESHOLD_CENTER_OFFSET # Down
                 threshold_data[3] = center_coord[0] + THRESHOLD_CENTER_OFFSET # Left
 
-            # TODO: Predict gaze direction
+            # TODO: Use eye box to calculate relative position
+
             if center_coord[0] < threshold_data[1]:
                 cv2.putText(img, "right", [50, 50], cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
             elif center_coord[0] > threshold_data[3]:
@@ -109,7 +109,6 @@ def predict_webcam():
                 cv2.putText(img, "up", [200, 50], cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
             elif center_coord[1] > threshold_data[2]:
                 cv2.putText(img, "down", [200, 50], cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
-
 
         cv2.imshow('Webcam', img)
         if cv2.waitKey(1) == ord('q'):
